@@ -16,9 +16,9 @@ def get_image():
     req = urllib.request.Request(url=quote_page, headers=headers)
     data =urllib.request.urlopen(req).read()
     soup = BeautifulSoup(data, 'html.parser')
-    content = soup.find_all('img')
+    content = soup.find_all('img',class_='lazyload')
     for i in content:
-        store.append(i['src'])
+        store.append(i['data-src'])
     
     return store
 
